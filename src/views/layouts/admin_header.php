@@ -27,7 +27,7 @@
             if (localStorage.getItem('darkMode') === 'true') document.documentElement.classList.add('dark');
         })();
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-sport-25 dark:bg-gray-950 font-sans">

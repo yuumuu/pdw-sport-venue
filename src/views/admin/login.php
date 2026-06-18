@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - SportVenue</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -14,6 +15,7 @@
                         sport: { 25: '#fff8f0', 50: '#fff0e0', 100: '#ffe0c0', 200: '#ffc18a', 300: '#ffa255', 400: '#fc8320', 500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12' },
                         success: '#03ca77', danger: '#e31748', 'dark-navy': '#001f3e',
                     },
+                    fontFamily: { sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'] },
                     borderRadius: { 'zp': '0.75rem', 'zp-lg': '1rem', 'zp-pill': '9999px' },
                     animation: {
                         'blob': 'blob 7s infinite',
@@ -61,25 +63,7 @@
         <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-pink-300/30 dark:bg-pink-900/20 rounded-none mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
     </div>
 
-    <!-- Toggle Dark Mode (Absolute TR) -->
-    <button onclick="toggleDarkMode()" class="absolute top-6 right-6 p-3 rounded-none glass-panel hover:scale-110 transition-transform shadow-lg group">
-        <i data-lucide="moon" class="w-5 h-5 text-gray-700 group-hover:text-sport-600 dark:hidden"></i>
-        <i data-lucide="sun" class="w-5 h-5 text-gray-300 group-hover:text-yellow-400 hidden dark:block"></i>
-    </button>
-
     <div class="w-full max-w-md w-full relative z-10">
-        
-        <!-- Logo -->
-        <div class="text-center mb-8">
-            <a href="<?= base_url('home') ?>" class="inline-flex items-center justify-center gap-3 group">
-                <div class="w-14 h-14 bg-gradient-to-tr from-sport-600 to-sport-400 rounded-none shadow-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                    <i data-lucide="trophy" class="w-7 h-7 text-white"></i>
-                </div>
-                <span class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sport-600 to-sport-400 tracking-tight">SportVenue</span>
-            </a>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 font-medium tracking-wide">Sistem Manajemen Reservasi Lapangan</p>
-        </div>
-
         <!-- Login Card -->
         <div class="glass-panel rounded-none shadow-2xl p-8 transform transition-all duration-500 hover:-translate-y-1">
             <div class="mb-8">
@@ -92,8 +76,7 @@
                 <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
                 <span><?= $msg ?></span>
             </div>
-            <?php endif; ?>
-            <?php if ($msg = flash('success')): ?>
+            <?php endif; if ($msg = flash('success')): ?>
             <div class="flex items-center gap-3 px-4 py-3 mb-6 rounded-none bg-success/10 border border-success/20 text-success text-sm font-medium">
                 <i data-lucide="check-circle-2" class="w-5 h-5 shrink-0"></i>
                 <span><?= $msg ?></span>
@@ -141,7 +124,6 @@
                 Kembali ke Beranda
             </a>
         </div>
-
     </div>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>

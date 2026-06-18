@@ -36,7 +36,7 @@ class AdminController extends Controller
             return;
         }
 
-        $this->view('admin/login');
+        $this->viewFull('admin/login');
     }
 
     public function logout()
@@ -57,7 +57,7 @@ class AdminController extends Controller
         $recentPayments = $paymentModel->getRecentPayments(10);
         $bookingsByField = $bookingModel->getBookingsByField();
 
-        $this->view('admin/dashboard', [
+        $this->viewFull('admin/dashboard', [
             'stats' => $stats,
             'recentPayments' => $recentPayments,
             'bookingsByField' => $bookingsByField,
@@ -125,7 +125,7 @@ class AdminController extends Controller
         }
 
         $fields = $model->getAllAdmin();
-        $this->view('admin/fields', ['fields' => $fields, 'model' => $model]);
+        $this->viewFull('admin/fields', ['fields' => $fields, 'model' => $model]);
     }
 
     public function bookings()
@@ -145,7 +145,7 @@ class AdminController extends Controller
         [$bookings, $total] = $model->all($page, 20, $filters);
         $totalPages = max(1, ceil($total / 20));
 
-        $this->view('admin/bookings', [
+        $this->viewFull('admin/bookings', [
             'bookings' => $bookings,
             'currentPage' => $page,
             'totalPages' => $totalPages,
@@ -222,7 +222,7 @@ class AdminController extends Controller
         $year = $_GET['year'] ?? date('Y');
         $revenueByMonth = $model->getRevenueByMonth($year);
 
-        $this->view('admin/reports', [
+        $this->viewFull('admin/reports', [
             'revenueByMonth' => $revenueByMonth,
             'year' => $year,
         ]);
@@ -313,7 +313,7 @@ class AdminController extends Controller
         }
 
         $users = $model->getAll();
-        $this->view('admin/users', [
+        $this->viewFull('admin/users', [
             'users'       => $users,
             'currentUser' => auth_user(),
         ]);

@@ -6,16 +6,14 @@ debug: true
 kind: wasmer.io/App.v0
 scaling:
   mode: single_concurrency
-
 volumes:
   - name: payments
-    mount: /app/public/assets/uploads/payments
-  - name: database
-    mount: /app/database
-
+    mount: /public/assets/uploads/payments
 capabilities:
   database:
     engine: mysql
   locality:
     regions:
       - us-socal1
+redirect:
+  force_https: true
