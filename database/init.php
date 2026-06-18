@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/config/Database.php';
+require_once __DIR__ . '/../src/config/database.php';
 
 echo "SportVenue — Database Initialization\n";
 echo str_repeat('=', 40) . "\n";

@@ -2,7 +2,7 @@
 
 function auth_login($username, $password)
 {
-    require_once __DIR__ . '/../config/Database.php';
+    require_once __DIR__ . '/../config/database.php';
     $db = Database::connect();
 
     $stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");

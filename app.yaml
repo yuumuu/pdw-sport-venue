@@ -1,8 +1,21 @@
-name: sportvenue
-app_id: da_nZyIPt1UDrbw
+name: pdw-sportvenue
+app_id: da_K6AIot5UJ3yL
 owner: yuumuu
-package: .
+package: sha256:bd6755923cb26d4a5efe526e375a6a11972d1566893819e51e6fd60fc4665d66
 debug: true
+kind: wasmer.io/App.v0
 scaling:
   mode: single_concurrency
-kind: wasmer.io/App.v0
+
+volumes:
+  - name: payments
+    mount: /app/public/assets/uploads/payments
+  - name: database
+    mount: /app/database
+
+capabilities:
+  database:
+    engine: mysql
+  locality:
+    regions:
+      - us-socal1
