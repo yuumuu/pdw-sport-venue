@@ -1,14 +1,29 @@
 [package]
-name = "zidanealhakim/sportvenue"
-version = "0.1.0"
+name = "yuumuu/sportvenue"
+version = "0.1.4"
 description = "SportVenue - Booking Lapangan Olahraga"
 
-[commands]
-start = "php -S 0.0.0.0:8080 -t public/"
+[dependencies]
+"php/php" = "*"
 
-[[volumes]]
+[[command]]
+name = "run"
+module = "php/php:php"
+runner = "wasi"
+
+[command.annotations.wasi]
+main-args = ["-t", "/app/public", "-S", "0.0.0.0:8080", "/app/public/index.php"]
+
+[[volume]]
 name = "data"
+dir = "/app/public/assets/uploads/payments"
+
+[[volume]]
+name = "database"
 dir = "/app/database"
+
+[fs]
+"/app" = "."
 
 [env]
 DB_DRIVER = "sqlite"

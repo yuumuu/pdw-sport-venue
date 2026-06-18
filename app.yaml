@@ -2,20 +2,7 @@ name: sportvenue
 app_id: da_nZyIPt1UDrbw
 owner: yuumuu
 package: .
-env:
-  DB_DRIVER: sqlite
-  DB_SQLITE_PATH: /app/database/data.db
-capabilities:
-  instaboot:
-    mode: null
-    requests:
-    - path: /
-    - path: /home
-volumes:
-- name: data
-  mount: /app/database
-- name: uploads
-  mount: /app/public/assets/uploads
+debug: true
 scaling:
   mode: single_concurrency
 kind: wasmer.io/App.v0

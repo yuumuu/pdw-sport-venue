@@ -67,14 +67,26 @@ class Database
 
         $isNew = !file_exists($path);
 
-        $pdo = new PDO("sqlite:$path", null, null, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
+        try {
+            $pdo = new PDO("sqlite:$path", null, null, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
 
-        $pdo->exec("PRAGMA journal_mode=WAL");
-        $pdo->exec("PRAGMA foreign_keys=ON");
+            $pdo->exec("PRAGMA journal_mode=WAL");
+            $pdo->exec("PRAGMA foreign_keys=ON");
+        } catch (PDOException $e) {
+            if (file_exists($path)) unlink($path);
+            $isNew = true;
+            $pdo = new PDO("sqlite:$path", null, null, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+            $pdo->exec("PRAGMA journal_mode=WAL");
+            $pdo->exec("PRAGMA foreign_keys=ON");
+        }
 
         if ($isNew) {
             self::initSqliteSchema($pdo);
