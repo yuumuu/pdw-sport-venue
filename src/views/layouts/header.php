@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'SportVenue - Booking Lapangan Olahraga Premium' ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -71,7 +72,6 @@
             }
         })();
     </script>
-    <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
 </head>
 <body class="bg-slate-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
