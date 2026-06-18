@@ -10,7 +10,7 @@ include __DIR__ . '/../layouts/admin_header.php';
                 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Total Reservasi</p>
                 <p class="text-2xl font-bold mt-1"><?= e($stats['total'] ?? 0) ?></p>
             </div>
-            <div class="w-10 h-10 rounded-none bg-sport-25 dark:bg-sport-900/20 flex items-center justify-center">
+            <div class="w-10 h-10 bg-sport-25 dark:bg-sport-900/20 border border-sport-500/20 flex items-center justify-center">
                 <i data-lucide="calendar" class="w-5 h-5 text-sport-500"></i>
             </div>
         </div>
@@ -21,7 +21,7 @@ include __DIR__ . '/../layouts/admin_header.php';
                 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Pending</p>
                 <p class="text-2xl font-bold mt-1"><?= e($stats['pending'] ?? 0) ?></p>
             </div>
-            <div class="w-10 h-10 rounded-none bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center">
+            <div class="w-10 h-10 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-500/20 flex items-center justify-center">
                 <i data-lucide="clock" class="w-5 h-5 text-yellow-600"></i>
             </div>
         </div>
@@ -32,7 +32,7 @@ include __DIR__ . '/../layouts/admin_header.php';
                 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Menunggu Verifikasi</p>
                 <p class="text-2xl font-bold mt-1"><?= e($stats['pending_validation'] ?? 0) ?></p>
             </div>
-            <div class="w-10 h-10 rounded-none bg-sport-25 dark:bg-sport-900/20 flex items-center justify-center">
+            <div class="w-10 h-10 bg-sport-25 dark:bg-sport-900/20 border border-sport-500/20 flex items-center justify-center">
                 <i data-lucide="search" class="w-5 h-5 text-sport-500"></i>
             </div>
         </div>
@@ -43,7 +43,7 @@ include __DIR__ . '/../layouts/admin_header.php';
                 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Pendapatan</p>
                 <p class="text-2xl font-bold mt-1 text-success">Rp<?= number_format($stats['revenue'] ?? 0, 0, ',', '.') ?></p>
             </div>
-            <div class="w-10 h-10 rounded-none bg-success/10 flex items-center justify-center">
+            <div class="w-10 h-10 bg-success/10 border border-success/20 flex items-center justify-center">
                 <i data-lucide="wallet" class="w-5 h-5 text-success"></i>
             </div>
         </div>

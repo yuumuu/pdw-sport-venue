@@ -15,6 +15,11 @@
                         success: '#03ca77', danger: '#e31748', 'dark-navy': '#001f3e',
                     },
                     fontFamily: { sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'] },
+                    boxShadow: {
+                        'zp-sm': '0 2px 8px rgba(0,0,0,0.04)',
+                        'zp': '0 8px 24px rgba(0,0,0,0.08)',
+                        'zp-glow': '0 0 20px rgba(249, 115, 22, 0.3)',
+                    },
                 },
             },
         };
@@ -41,22 +46,22 @@
                     $isActive = function($path) use ($currentUrl) {
                         return strpos($currentUrl, trim($path, '/')) !== false && ($path !== 'admin' || $currentUrl === 'admin');
                     };
-                    $activeClass = 'bg-sport-500/10 text-sport-500';
-                    $inactiveClass = 'hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400';
+                    $activeClass = 'bg-sport-500 text-white shadow-sm';
+                    $inactiveClass = 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200';
                 ?>
-                <a href="<?= base_url('admin') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-none transition-colors <?= $isActive('admin') && $currentUrl === 'admin' ? $activeClass : $inactiveClass ?>">
+                <a href="<?= base_url('admin') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors <?= $isActive('admin') && $currentUrl === 'admin' ? $activeClass : $inactiveClass ?>">
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
                 </a>
-                <a href="<?= base_url('admin/fields') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-none transition-colors <?= $isActive('admin/fields') ? $activeClass : $inactiveClass ?>">
+                <a href="<?= base_url('admin/fields') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors <?= $isActive('admin/fields') ? $activeClass : $inactiveClass ?>">
                     <i data-lucide="trophy" class="w-4 h-4"></i> Kelola Lapangan
                 </a>
-                <a href="<?= base_url('admin/bookings') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-none transition-colors <?= $isActive('admin/bookings') ? $activeClass : $inactiveClass ?>">
+                <a href="<?= base_url('admin/bookings') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors <?= $isActive('admin/bookings') ? $activeClass : $inactiveClass ?>">
                     <i data-lucide="calendar" class="w-4 h-4"></i> Reservasi
                 </a>
-                <a href="<?= base_url('admin/reports') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-none transition-colors <?= $isActive('admin/reports') ? $activeClass : $inactiveClass ?>">
+                <a href="<?= base_url('admin/reports') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors <?= $isActive('admin/reports') ? $activeClass : $inactiveClass ?>">
                     <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Laporan
                 </a>
-                <a href="<?= base_url('admin/users') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-none transition-colors <?= $isActive('admin/users') ? $activeClass : $inactiveClass ?>">
+                <a href="<?= base_url('admin/users') ?>" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors <?= $isActive('admin/users') ? $activeClass : $inactiveClass ?>">
                     <i data-lucide="users" class="w-4 h-4"></i> Manajemen Admin
                 </a>
             </nav>
@@ -65,7 +70,7 @@
                     <i data-lucide="user" class="w-4 h-4"></i>
                     <span class="flex-1 truncate"><?= e(auth_user()['display_name'] ?? 'Admin') ?></span>
                 </div>
-                <a href="<?= base_url('admin/logout') ?>" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-danger rounded-none hover:bg-danger/5 transition-colors mt-1">
+                <a href="<?= base_url('admin/logout') ?>" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-danger hover:bg-danger/5 transition-colors mt-1">
                     <i data-lucide="log-out" class="w-4 h-4"></i> Logout
                 </a>
             </div>
@@ -78,7 +83,7 @@
                     <a href="<?= base_url('admin/logout') ?>" class="text-sm text-danger hover:underline flex items-center gap-1 lg:hidden">
                         <i data-lucide="log-out" class="w-4 h-4"></i> Logout
                     </a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-none hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 flex items-center justify-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-all">
                         <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
                     </button>
@@ -87,12 +92,12 @@
 
             <main class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
                 <?php if ($msg = flash('success')): ?>
-                <div class="flex items-center gap-2 px-4 py-3 rounded-none bg-success/10 text-success text-sm font-medium">
-                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> <?= $msg ?>
+                <div class="flex items-center gap-2 px-4 py-3 bg-success/10 text-success text-sm font-medium border border-success/20">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i> <?= $msg ?>
                 </div>
                 <?php endif; ?>
                 <?php if ($msg = flash('error')): ?>
-                <div class="flex items-center gap-2 px-4 py-3 rounded-none bg-danger/10 text-danger text-sm font-medium">
-                    <i data-lucide="alert-circle" class="w-4 h-4"></i> <?= $msg ?>
+                <div class="flex items-center gap-2 px-4 py-3 bg-danger/10 text-danger text-sm font-medium border border-danger/20">
+                    <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i> <?= $msg ?>
                 </div>
                 <?php endif; ?>

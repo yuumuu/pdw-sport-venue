@@ -2,7 +2,6 @@
    SportVenue — Custom Utilities
    ============================================ */
 
-/* Line clamp */
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -10,7 +9,6 @@
     overflow: hidden;
 }
 
-/* Custom transitions */
 .hover-lift {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -19,7 +17,6 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* Slot card pulse animation */
 @keyframes slot-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
@@ -28,57 +25,49 @@
     animation: slot-pulse 2s ease-in-out infinite;
 }
 
-/* Smooth scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
-/* Dark mode scrollbar */
-.dark ::-webkit-scrollbar-thumb {
-    background: #475569;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
-}
-
-/* Focus ring utility */
-.focus-ring {
-    outline: none;
-    transition: box-shadow 0.15s ease;
-}
-.focus-ring:focus {
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
-}
-
-/* Skeleton loading */
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
 .skeleton {
     background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
-    border-radius: 0.25rem;
 }
 .dark .skeleton {
     background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
     background-size: 200% 100%;
 }
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
 
-/* Print styles */
 @media print {
     nav, footer, .no-print { display: none !important; }
     body { background: white !important; color: black !important; }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: none;
+}
+
+::selection {
+    background-color: rgba(249, 115, 22, 0.2);
+    color: inherit;
+}
+
+.dark ::selection {
+    background-color: rgba(249, 115, 22, 0.3);
 }

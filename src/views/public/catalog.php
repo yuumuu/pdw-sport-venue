@@ -44,10 +44,10 @@
     
     <div id="fieldGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         <?php foreach ($fields as $field): ?>
-        <div class="group bg-white dark:bg-gray-900 rounded-none border border-gray-100 dark:border-gray-800 shadow-zp-sm hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col transform hover:-translate-y-1">
+        <div class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
             
             <!-- Image Area -->
-            <div class="relative h-56 w-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+            <div class="relative h-56 w-full bg-gray-200 dark:bg-gray-800 overflow-hidden border-b border-gray-200 dark:border-gray-700">
                 <?php if (!empty($field['image']) && file_exists(__DIR__ . '/../../../public/assets/uploads/' . $field['image'])): ?>
                     <img src="<?= base_url('assets/uploads/' . $field['image']) ?>" alt="<?= e($field['name']) ?>" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
                 <?php else: ?>
@@ -57,7 +57,7 @@
                 <?php endif; ?>
                 
                 <div class="absolute top-4 left-4 flex gap-2">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none text-xs font-bold bg-white/90 dark:bg-gray-900/90 text-sport-600 dark:text-sport-400 backdrop-blur-md shadow-sm">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold bg-white/90 dark:bg-gray-900/90 text-sport-600 dark:text-sport-400 backdrop-blur-md shadow-sm border border-white/20 dark:border-gray-800/50">
                         <i data-lucide="trophy" class="w-3.5 h-3.5"></i>
                         <?= e($field['sport']) ?>
                     </span>
@@ -80,14 +80,14 @@
                 </p>
                 
                 <!-- Footer / Action -->
-                <div class="flex items-center justify-between pt-5 border-t border-gray-100 dark:border-gray-800 mt-auto">
+                <div class="flex items-center justify-between pt-5 border-t border-gray-200 dark:border-gray-700 mt-auto">
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400 mb-0.5">Harga Sewa</p>
                         <p class="text-lg font-extrabold text-sport-600 dark:text-sport-400 tracking-tight">
                             Rp<?= number_format($field['price_per_hour'], 0, ',', '.') ?><span class="text-sm font-medium text-gray-400">/jam</span>
                         </p>
                     </div>
-                    <a href="<?= base_url('schedule?id=' . $field['id']) ?>" class="inline-flex items-center justify-center w-12 h-12 bg-sport-50 dark:bg-sport-900/20 text-sport-500 rounded-none group-hover:bg-sport-500 group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-sport-500/30">
+                    <a href="<?= base_url('schedule?id=' . $field['id']) ?>" class="inline-flex items-center justify-center w-12 h-12 bg-sport-500 text-white hover:bg-sport-600 transition-all duration-300 shadow-sm hover:shadow-md">
                         <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform"></i>
                     </a>
                 </div>
